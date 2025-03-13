@@ -1,0 +1,5 @@
+[
+    {"username": "student001", "password": "123456", "role": "student"},
+    {"username": "wilert@slw.ac.th", "password": "376982550", "role": "teacher"},
+    {"username": "poohdi@slw.ac.th", "password": "poohdi", "role": "teacher"}
+]
