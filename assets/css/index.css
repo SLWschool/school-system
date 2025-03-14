@@ -16,7 +16,7 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(180deg, black, #00000000);
+    background: rgba(0 ,0 ,0 ,0.5);
     color: white;
     padding: 15px;
     display: flex;
@@ -29,7 +29,7 @@ header {
 }
 
 .scrolled {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 1);
 }
 
 .left-tag {
