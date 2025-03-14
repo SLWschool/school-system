@@ -37,9 +37,6 @@ main {
     background: var(--color4);
 }
 
-.btn:hover {
-    background: #218838;
-}
 
 footer {
     position: absolute;
