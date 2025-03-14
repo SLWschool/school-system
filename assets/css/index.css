@@ -98,6 +98,19 @@ ul.news-ul {
     gap: 20px;
 }
 
+.news-ul li {
+    width: 33.33%;
+    height: 151px;
+}
+
+.news-ul li:hover icon {
+    font-size: 48px;
+}
+.news-ul li:hover {
+    background: #0c7bfd;
+    border-radius: 5px;
+}
+
 .login {
     display: none;
     background: #0c7bfd;
