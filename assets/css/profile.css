@@ -113,3 +113,14 @@ footer {
     color: white;
     padding: 20px;
 }
+
+@media (max-width: 580px) {
+    header nav {
+        display: unset !important;
+    }
+}
+@media (max-width: 580px) {
+    header nav li:last-child {
+        display: none;
+    }
+}
