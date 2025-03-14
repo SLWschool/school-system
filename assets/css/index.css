@@ -7,6 +7,10 @@
     font-family: CPN, sans-serif;
 }
 
+img{
+    -webkit-user-drag: none;
+}
+
 body {
     background-color: #f5f5f5;
     text-align: center;
