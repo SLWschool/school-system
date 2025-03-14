@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const link = document.createElement("a");
         link.href = subjectLinks[subject]; // ใช้ URL ที่กำหนดไว้
-        link.textContent = "ดูผลการสอบ";
+        link.textContent = "เข้าแก้ไขข้อสอบ";
         link.target = "_blank";
         link.style.display = "block";
         link.style.marginTop = "10px";
