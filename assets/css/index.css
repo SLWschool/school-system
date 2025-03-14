@@ -28,6 +28,10 @@ header {
     top: 0;
 }
 
+.scrolled {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .left-tag {
     display: flex;
     align-items: center;
