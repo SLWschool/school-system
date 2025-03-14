@@ -36,17 +36,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ฟังก์ชันแสดง iframe ตามวิชาที่เลือก
-    function displayGradeIframe(subject) {
+    // ฟังก์ชันแสดงลิงก์แทน iframe
+    function displayGradeLink(subject) {
         testScoreDiv.innerHTML = ""; // เคลียร์ข้อมูลเดิม
         
         if (!subject || !subjectLinks[subject]) return;
 
-        const iframe = document.createElement("a");
-        iframe.src = subjectLinks[subject]; // ใช้ URL ที่กำหนดไว้
-        iframe.style.border = "1px solid #ccc";
+        const link = document.createElement("a");
+        link.href = subjectLinks[subject]; // ใช้ URL ที่กำหนดไว้
+        link.textContent = "ดูผลการสอบ";
+        link.target = "_blank";
+        link.style.display = "block";
+        link.style.marginTop = "10px";
+        link.style.fontSize = "18px";
+        link.style.color = "blue";
+        link.style.textDecoration = "underline";
 
-        testScoreDiv.appendChild(iframe);
+        testScoreDiv.appendChild(link);
     }
 
     // โหลดตัวเลือกวิชาเมื่อหน้าเว็บโหลดเสร็จ
@@ -56,6 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     gradeForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const selectedSubject = subjectSelect.value;
-        displayGradeIframe(selectedSubject);
+        displayGradeLink(selectedSubject);
     });
 });
