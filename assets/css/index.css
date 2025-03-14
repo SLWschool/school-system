@@ -16,7 +16,7 @@ body {
 
 /* Header */
 header {
-    background: #007bff;
+    background: linear-gradient(180deg, black, #00000000);
     color: white;
     padding: 20px;
     display: flex;
