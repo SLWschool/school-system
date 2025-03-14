@@ -18,16 +18,42 @@ body {
 header {
     background: linear-gradient(180deg, black, #00000000);
     color: white;
-    padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+}
+
+.left-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo {
     width: 60px;
     height: 60px;
+}
+
+.right-tag ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+}
+
+.right-tag ul li {
+    display: inline;
+}
+
+.right-tag ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+.right-tag ul .active a {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
 }
 
 header h1 {
@@ -39,6 +65,15 @@ header h1 {
 /* เนื้อหาหลัก */
 main {
     margin-top: 50px;
+}
+
+.about, .news {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn {
