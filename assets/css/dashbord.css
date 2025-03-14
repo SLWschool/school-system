@@ -12,10 +12,18 @@ main {
     font-size: 18px;
     border-radius: 5px;
     border: 0;
+    height: max-content;
 }
 
 .btn:hover {
     background: #218838;
+}
+
+#buttons {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
