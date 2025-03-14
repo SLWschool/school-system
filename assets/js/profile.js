@@ -1,74 +1,42 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const profileInfo = document.getElementById("profile-info");
-    const editBtn = document.getElementById("edit-btn");
-    const editForm = document.getElementById("edit-form");
-    const profileForm = document.getElementById("profile-form");
+// ตรวจสอบการเข้าสู่ระบบ
+function login(event) {
+    event.preventDefault(); // ป้องกันการรีเฟรชหน้าเมื่อ submit
 
-    // ดึง username ที่ล็อกอินอยู่จาก localStorage
-    const username = localStorage.getItem("username");
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-    if (!username) {
-        alert("กรุณาเข้าสู่ระบบก่อน");
-        window.location.href = "login.html";
-        return;
-    }
-
-    // ดึงข้อมูลผู้ใช้จาก Google Sheets
+    // ดึงข้อมูลจาก login.json
     fetch("https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec")
         .then(response => response.json())
         .then(data => {
             const user = data.users.find(user => user.username === username);
-            if (user) {
-                // แสดงข้อมูลในหน้าโปรไฟล์
-                profileInfo.innerHTML = `
-                    <p><strong>ชื่อ:</strong> ${user.name}</p>
-                    <p><strong>อีเมล์:</strong> ${user.username}</p>
-                    <p><strong>บทบาท:</strong> ${user.role === "teacher" ? "ครู" : "นักเรียน"}</p>
-                `;
 
-                // เติมค่าในฟอร์มแก้ไข
-                document.getElementById("name").value = user.name;
-                document.getElementById("email").value = user.username;
-                document.getElementById("role").value = user.role;
+            if (user && user.password === password) {
+                alert("เข้าสู่ระบบสำเร็จ");
+
+                // เก็บข้อมูลใน localStorage
+                localStorage.setItem("username", user.username);
+                localStorage.setItem("userRole", user.role);
+                
+                // เปลี่ยนเส้นทางไปที่ dashboard ตาม role
+                if (user.role === "teacher") {
+                    window.location.href = "teacher-dashboard.html";
+                } else {
+                    window.location.href = "dashboard.html";
+                }
             } else {
-                alert("ไม่พบข้อมูลผู้ใช้");
+                alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
             }
         })
-        .catch(error => console.error("เกิดข้อผิดพลาด:", error));
+        .catch(error => {
+            console.error("เกิดข้อผิดพลาดในการโหลดข้อมูล:", error);
+        });
+}
 
-    // แสดงฟอร์มแก้ไขเมื่อคลิกปุ่ม "แก้ไขโปรไฟล์"
-    editBtn.addEventListener("click", function () {
-        editForm.style.display = "block";
-    });
-
-    // เมื่อกดปุ่ม "บันทึก" ให้ส่งข้อมูลไปอัปเดต
-    profileForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const updatedData = {
-            username: username,
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            role: document.getElementById("role").value
-        };
-
-        // ส่งข้อมูลไปอัปเดตที่ Google Sheets
-        fetch("https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(updatedData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success") {
-                alert("บันทึกข้อมูลสำเร็จ!");
-                window.location.reload(); // รีโหลดหน้าเพื่อแสดงข้อมูลล่าสุด
-            } else {
-                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
-            }
-        })
-        .catch(error => console.error("เกิดข้อผิดพลาด:", error));
-    });
+// ตรวจสอบว่ามีฟอร์ม login หรือไม่
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", login);
+    }
 });
