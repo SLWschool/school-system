@@ -19,13 +19,6 @@ main {
     background: #218838;
 }
 
-#buttons {
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 footer {
     position: absolute;
     bottom: 0;
