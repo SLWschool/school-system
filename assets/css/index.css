@@ -55,6 +55,7 @@ header {
     text-decoration: none;
     padding: 8px 12px;
     cursor: pointer;
+    transition: .2s ease;
 }
 
 .right-tag ul .active a {
