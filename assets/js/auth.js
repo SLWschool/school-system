@@ -8,7 +8,7 @@ function login(event) {
     const password = document.getElementById('password').value;
 
     // ดึงข้อมูลจาก Google Sheets ผ่าน Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec')
+    fetch('https://script.google.com/macros/s/AKfycbzQ2hXkbWhLE6pDKQgFECymtSvz3pbWNZap6VpqwfkHHicAgW6pnsG5mpUxV1kB_DSutg/exec')
         .then(response => response.json())
         .then(data => {
             const user = data.find(user => user.username === username); // ค้นหาผู้ใช้จาก username
