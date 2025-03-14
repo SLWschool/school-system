@@ -3,7 +3,7 @@
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>การจัดการผลการเรียน</title>
+      <title>ผลการสอบกลางภาค - ปลายภาค</title>
       <link rel="stylesheet" href="../assets/css/styles.css">
       <link rel="stylesheet" href="../assets/css/index.css">
       <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -35,7 +35,7 @@
     <header>
         <div class="logo-container">
             <img src="../assets/img/logo.png" alt="โลโก้โรงเรียน" class="logo">
-            <h1>การจัดการผลการเรียน</h1>
+            <h1>ระบบแจ้งผลการสอบ</h1>
         </div>
         <nav>
             <ul>
@@ -47,46 +47,25 @@
 
     <main>
       <div>
-        <h2>จัดการผลการเรียนของนักเรียน</h2>
-        <p>โปรดเลือกนักเรียนและรายวิชาที่ต้องการจัดการผลการเรียน</p>
+        <h2>ระบบแจ้งผลการสอบ</h2>
+        <p>โปรดเลือกนักเรียนและรายวิชาที่ต้องการดูคะแนนสอบ</p>
 
-        <!-- ฟอร์มสำหรับเลือกนักเรียนและรายวิชา -->
         <section id="grade-management-section">
             <form id="grade-form">
-                <label for="student-name">เลือกนักเรียน:</label>
-                <select id="student-name" required>
-                    <!-- ตัวเลือกนักเรียนจะถูกเติมข้อมูลโดย JavaScript -->
-                </select>
-
-                <label for="subject">เลือกวิชา:</label>
+                <label for="subject">สาระการเรียนรู้:</label>
                 <select id="subject" required>
                     <!-- ตัวเลือกวิชาจะถูกเติมข้อมูลโดย JavaScript -->
                 </select>
 
-                <label for="grade">กรอกผลการเรียน:</label>
-                <input type="number" id="grade" min="0" max="100" required>
-
-                <button type="submit">บันทึกผลการเรียน</button>
+                <button type="submit">ค้นหา</button>
             </form>
-
-            <p id="grade-message" class="message"></p>
         </section>
 
-        <!-- ตารางผลการเรียนของนักเรียน -->
         <section id="grade-table">
-            <h3>ผลการเรียนของนักเรียน</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ชื่อผู้เรียน</th>
-                        <th>รายวิชา</th>
-                        <th>ผลการเรียน</th>
-                    </tr>
-                </thead>
-                <tbody id="grades-list">
-                    <!-- ตารางจะถูกเติมข้อมูลโดย JavaScript -->
-                </tbody>
-            </table>
+            <h3>ผลการสอบของนักเรียน</h3>
+            <div id="test-score">
+              <!-- แสดง iframe ผลการสอบของนักเรียน จาก input subject -->
+            </div>
         </section>
       </div>
     </main>
