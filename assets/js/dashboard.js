@@ -18,8 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // ถ้าเป็นนักเรียน แสดงเนื้อหาสำหรับนักเรียน
         roleSpecificContent.innerHTML = `
             <h2>ยินดีต้อนรับ, นักเรียน</h2>
-            <button onclick="goToStudentDashboard()" class="btn student">ไปที่ Dashboard นักเรียน</button>
-            <button onclick="goToSubjectGrades()" class="btn student">ดูผลการเรียน</button>
+            <div class="menu">
+                <div class="sub-menu">
+                    <button onclick="goToStudentDashboard()" class="btn student">ไปที่ Dashboard นักเรียน</button>
+                    <button onclick="goToSubjectGrades()" class="btn student">ดูผลการเรียน</button>
+                </div>
+            </div>
         `;
     } else {
         // ถ้าไม่พบบทบาทให้แสดงข้อความ
