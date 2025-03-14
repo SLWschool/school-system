@@ -8,7 +8,7 @@ function login(event) {
     const password = document.getElementById('password').value;
 
     // ดึงข้อมูลจาก login.json
-    fetch('https://script.google.com/macros/s/AKfycbxP-k21wClJGwBBw0SQurHAbJggoQeis_u3pgxi_sCVaPTbBONXTup3aVHBKu-nw-ZeJw/exec')
+    fetch('https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec')
         .then(response => response.json())
         .then(data => {
             const user = data.find(user => user.username === username); // ใช้ find แทนการใช้ filter
