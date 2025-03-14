@@ -80,3 +80,8 @@ a:hover {
 .login-box a {
     color: var(--infopro-ace-a);
 }
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
