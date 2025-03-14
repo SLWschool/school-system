@@ -72,3 +72,11 @@ input:-internal-autofill-selected {
     background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
     color: fieldtext !important;
 }
+
+a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+.login-box a {
+    color: var(--infopro-ace-a);
+}
