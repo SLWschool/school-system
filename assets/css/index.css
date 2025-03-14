@@ -30,6 +30,12 @@ header {
     height: 60px;
 }
 
+header h1 {
+    font-size: 2em;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 /* เนื้อหาหลัก */
 main {
     margin-top: 50px;
