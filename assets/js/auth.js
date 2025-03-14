@@ -1,37 +1,77 @@
 // auth.js
 
-// ตรวจสอบการเข้าสู่ระบบ
 function login(event) {
-    event.preventDefault(); // ป้องกันการรีเฟรชหน้าเมื่อ submit
+    event.preventDefault();
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    // ดึงข้อมูลจาก login.json
     fetch('https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec')
         .then(response => response.json())
         .then(data => {
-            const user = data.find(user => user.username === username); // ใช้ find แทนการใช้ filter
+            const user = data.users.find(user => user.username === username && user.password === password);
 
-            // ตรวจสอบรหัสผู้ใช้
-            if (user && user.password === password) {
+            if (user) {
                 alert('เข้าสู่ระบบสำเร็จ');
-                localStorage.setItem('userRole', user.role); // เก็บบทบาทผู้ใช้ใน localStorage
-                window.location.href = 'dashboard.html';  // ไปที่หน้า dashboard เมื่อเข้าสู่ระบบสำเร็จ
+                
+                // เก็บข้อมูลเข้าสู่ระบบ
+                localStorage.setItem('username', user.username);
+                localStorage.setItem('role', user.role);
+
+                window.location.href = user.role === 'teacher' ? 'teacher-dashboard.html' : 'dashboard.html';
             } else {
                 alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
             }
         })
-        .catch(error => {
-            console.error('เกิดข้อผิดพลาดในการโหลดข้อมูล:', error);
-        });
+        .catch(error => console.error('เกิดข้อผิดพลาด:', error));
 }
 
-// เพิ่มฟังก์ชันสำหรับการทำงานเมื่อโหลดหน้า
+// โหลดข้อมูลครูใน teacher-dashboard
+function loadTeacherDashboard() {
+    const username = localStorage.getItem('username');
+
+    fetch('https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec')
+        .then(response => response.json())
+        .then(data => {
+            const teacher = data.users.find(user => user.username === username);
+
+            if (teacher) {
+                document.getElementById('teacher-name').textContent = teacher.name;
+                document.getElementById('teacher-email').textContent = teacher.username;
+                document.getElementById('teacher-role').textContent = teacher.role;
+            } else {
+                alert('ไม่พบข้อมูลครู');
+            }
+        })
+        .catch(error => console.error('เกิดข้อผิดพลาด:', error));
+}
+
+// โหลดข้อมูลครูในหน้าโปรไฟล์
+function loadTeacherProfile() {
+    const username = localStorage.getItem('username');
+
+    fetch('https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec')
+        .then(response => response.json())
+        .then(data => {
+            const teacher = data.users.find(user => user.username === username);
+
+            if (teacher) {
+                document.getElementById('profile-name').textContent = teacher.name;
+                document.getElementById('profile-email').textContent = teacher.username;
+                document.getElementById('profile-role').textContent = teacher.role;
+            } else {
+                alert('ไม่พบข้อมูลโปรไฟล์');
+            }
+        })
+        .catch(error => console.error('เกิดข้อผิดพลาด:', error));
+}
+
+// โหลดข้อมูลตามหน้าเว็บ
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
-    
-    if (loginForm) {
-        loginForm.addEventListener('submit', login);
+    if (document.getElementById('teacher-dashboard')) {
+        loadTeacherDashboard();
+    }
+    if (document.getElementById('profile-page')) {
+        loadTeacherProfile();
     }
 });
