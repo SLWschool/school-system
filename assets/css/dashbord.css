@@ -11,6 +11,7 @@ main {
 }
 
 .btn {
+    width: 50%;
     display: inline-block;
     padding: 10px 20px;
     color: white;
@@ -103,5 +104,30 @@ header ul li a {
 @media (max-width: 580px) {
     header nav {
         display: none;
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.sub-menu {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+main h2 {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 530px) {
+    .sub-menu {
+        flex-flow: column;
+    }
+    .btn {
+        width: 100%!important;
     }
 }
