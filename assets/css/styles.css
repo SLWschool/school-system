@@ -1,3 +1,16 @@
+/* เชื่อมต่อฟอนต์ Sarabun */
+@font-face {
+    font-family: 'Sarabun';
+    src: url('../fonts/Sarabun-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('../fonts/Sarabun-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
 /* ตั้งค่าสไตล์พื้นฐาน */
 * {
     margin: 0;
