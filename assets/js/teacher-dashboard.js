@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => { 
-    const teacherUsername = localStorage.getItem('username'); // ดึงชื่อครูจาก Local Storage
-    document.getElementById('teacher-name').textContent = teacherUsername || 'ครู';
+    const teacherName = localStorage.getItem('name') || localStorage.getItem('username'); // ดึงชื่อเต็มหรือ username
+    document.getElementById('teacher-name').textContent = teacherName || 'ครู';
 
     // ตรวจสอบสิทธิ์การเข้าใช้งาน
     const userRole = localStorage.getItem('userRole');
