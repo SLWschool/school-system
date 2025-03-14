@@ -5,6 +5,10 @@
     --color4: rgb(152, 143, 245);
 }
 
+img{
+    -webkit-user-drag: none;
+}
+
 main {
     margin-top: 90px;
     padding: 20px 0;
