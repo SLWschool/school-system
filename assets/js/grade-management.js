@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // รายการวิชาและลิงก์ iframe ของแต่ละวิชา
     const subjectLinks = {
-        "math": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAdRma2Io46erZSE6yVa6Lwqj0TZFZyjDT-ACbEW6Ns7oRUOEtOSrkWRAU2CbS-ouCmdTElvv5cP7u/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false",
+        "math": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAdRma2Io46erZSE6yVa6Lwqj0TZFZyjDT-ACbEW6Ns7oRUOEtOSrkWRAU2CbS-ouCmdTElvv5cP7u/pubhtml?gid=2060522829&amp;single=true&amp;widget=true&amp;headers=false",
         "science": "https://example.com/science-results",
         "english": "https://example.com/english-results",
         "history": "https://example.com/history-results"
