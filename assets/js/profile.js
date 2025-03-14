@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const username = localStorage.getItem('name') || 'ไม่พบชื่อผู้ใช้';
-    const email = localStorage.getItem('email') || 'ไม่พบอีเมล';
+    const email = localStorage.getItem('username') || 'ไม่พบอีเมล';
     const userRole = localStorage.getItem('userRole') || 'student';
 
     const profileInfo = document.getElementById('profile-info');
