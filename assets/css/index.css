@@ -22,6 +22,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 90px;
 }
 
 .left-tag {
@@ -50,6 +51,7 @@ header {
     color: white;
     text-decoration: none;
     padding: 8px 12px;
+    cursor: pointer;
 }
 
 .right-tag ul .active a {
@@ -58,14 +60,19 @@ header {
 }
 
 header h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 500;
     line-height: 1.5;
+    text-align: left;
 }
 
 /* เนื้อหาหลัก */
 main {
     margin-top: 50px;
+}
+
+ul {
+    list-style: none;
 }
 
 .about, .news {
@@ -100,4 +107,28 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* 🔥 Media Queries สำหรับจอเล็ก 🔥 */
+
+/* จอเล็กกว่า 580px -> ซ่อน right-tag */
+@media (max-width: 580px) {
+    .right-tag {
+        display: none;
+    }
+}
+
+/* จอเล็กกว่า 380px -> ปรับขนาด h1 */
+@media (max-width: 380px) {
+    header h1 {
+        font-size: 1.2em !important;
+    }
+}
+
+/* จอเล็กกว่า 300px -> ปรับขนาดโลโก้ */
+@media (max-width: 300px) {
+    .logo {
+        width: 40px !important;
+        height: 40px !important;
+    }
 }
