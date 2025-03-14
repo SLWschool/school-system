@@ -6,15 +6,13 @@ body {
 }
 /* Header */
 header {
-    background: rgba(0 ,0 ,0 ,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 15px;
-/*     display: flex;
-    justify-content: space-between; */
     align-items: center;
-    height: 90px;
+    height: 60px;
     position: fixed;
-    width: 100%;
+    width: -webkit-fill-available;
     top: 0;
 }
 
@@ -24,7 +22,7 @@ header {
 
 header .logo-container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -32,15 +30,24 @@ header .logo {
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    display:none;
 }
 
 header h1 {
     font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+header nav {
+    justify-content: right;
+    display: flex;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -51,6 +58,14 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding: 3px 4.5px;
+}
+
+header ul li a:hover {
+    background: transparent!important;
+    border-radius: unset!important;
+    border-bottom: 2px solid !important;
 }
 
 main {
