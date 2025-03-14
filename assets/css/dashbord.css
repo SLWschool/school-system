@@ -17,3 +17,9 @@ main {
 .btn:hover {
     background: #218838;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
