@@ -7,8 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // ถ้าเป็นครู แสดงเนื้อหาสำหรับครู
         roleSpecificContent.innerHTML = `
             <h2>ยินดีต้อนรับ, ครู</h2>
-            <button onclick="goToTeacherDashboard()" class="btn teacher">ไปที่ Dashboard ครู</button>
-            <button onclick="goToGradeManagement()" class="btn teacher">จัดการคะแนน</button>
+            <div class="menu">
+                <div class="sub-menu">
+                    <button onclick="goToTeacherDashboard()" class="btn teacher">ไปที่ Dashboard ครู</button>
+                    <button onclick="goToGradeManagement()" class="btn teacher">จัดการคะแนน</button>
+                </div>
+            </div>
         `;
     } else if (userRole === 'student') {
         // ถ้าเป็นนักเรียน แสดงเนื้อหาสำหรับนักเรียน
