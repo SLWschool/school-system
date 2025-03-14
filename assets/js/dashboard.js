@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userRole === 'student') {
         // แสดงปุ่มสำหรับนักเรียน
         buttonsDiv.innerHTML = `
-            <button onclick="location.href='student-dashboard.html'">เข้าสู่แดชบอร์ดนักเรียน</button>
+            <button onclick="location.href='student-dashboard.html'" class="btn">เข้าสู่แดชบอร์ดนักเรียน</button>
         `;
     } else if (userRole === 'teacher') {
         // แสดงปุ่มสำหรับครู
         buttonsDiv.innerHTML = `
-            <button onclick="location.href='teacher-dashboard.html'">เข้าสู่แดชบอร์ดครู</button>
+            <button onclick="location.href='teacher-dashboard.html'" class="btn">เข้าสู่แดชบอร์ดครู</button>
         `;
     } else {
         // ถ้าไม่มีบทบาทที่รู้จัก
