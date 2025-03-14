@@ -121,3 +121,9 @@ h2 {
 footer {
     position: unset !important;
 }
+
+footer {
+    background: linear-gradient(0, #000000, transparent);
+    color: white;
+    padding: 20px;
+}
