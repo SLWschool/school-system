@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userRole === 'teacher') {
         // ถ้าเป็นครู แสดงเนื้อหาสำหรับครู
         roleSpecificContent.innerHTML = `
-            <h2>ยินดีต้อนรับ, ครู</h2>
+            <h2>ยินดีต้อนรับ, Dashboard ระบบครู โรงเรียนสโมสรหลวงวิทยาลัย</h2>
             <div class="menu">
                 <div class="sub-menu">
                     <button onclick="goToTeacherDashboard()" class="btn teacher">ไปที่ Dashboard ครู</button>
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (userRole === 'student') {
         // ถ้าเป็นนักเรียน แสดงเนื้อหาสำหรับนักเรียน
         roleSpecificContent.innerHTML = `
-            <h2>ยินดีต้อนรับ, นักเรียน</h2>
+            <h2>ยินดีต้อนรับ, Dashboard นักเรียน โรงเรียนสโมสรหลวงวิทยาลัย</h2>
             <div class="menu">
                 <div class="sub-menu">
                     <button onclick="goToStudentDashboard()" class="btn student">ไปที่ Dashboard นักเรียน</button>
