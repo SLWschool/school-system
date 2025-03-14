@@ -102,3 +102,9 @@ header ul li a {
     cursor: pointer;
     transition: .2s ease;
 }
+
+@media (max-width: 580px) {
+    header nav {
+        display: none;
+    }
+}
