@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์ผู้ใช้</title>
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/dashbord.css">
+    <link rel="stylesheet" href="../assets/css/font-face.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../assets/img/logo.png" alt="โลโก้โรงเรียน" class="logo">
+            <h1>โปรไฟล์ผู้ใช้</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">กลับสู่ Dashboard</a></li>
+                <li><a href="logout.html">ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <h2>ข้อมูลผู้ใช้</h2>
+            <div id="profile-info">
+                <!-- ข้อมูลผู้ใช้จะแสดงที่นี่ -->
+            </div>
+            <button id="edit-btn">แก้ไขโปรไฟล์</button>
+            <div id="edit-form" style="display:none;">
+                <h3>แก้ไขข้อมูล</h3>
+                <form id="profile-form">
+                    <label for="name">ชื่อ:</label>
+                    <input type="text" id="name" name="name">
+                    <br>
+                    <label for="email">อีเมล์:</label>
+                    <input type="email" id="email" name="email">
+                    <br>
+                    <label for="role">บทบาท:</label>
+                    <select id="role" name="role">
+                        <option value="teacher">ครู</option>
+                        <option value="student">นักเรียน</option>
+                    </select>
+                    <br>
+                    <button type="submit">บันทึก</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 โรงเรียนของเรา</p>
+    </footer>
+
+    <script src="../assets/js/profile.js"></script>
+</body>
+</html>
