@@ -1,69 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // ดึงข้อมูลนักเรียนและวิชาจาก localStorage หรือ API
-    const students = JSON.parse(localStorage.getItem('students')) || [];
-    const subjects = JSON.parse(localStorage.getItem('subjects')) || [];
-    const gradesList = document.getElementById('grades-list');
-    const gradeForm = document.getElementById('grade-form');
-    const gradeMessage = document.getElementById('grade-message');
-    
-    // เติมข้อมูลนักเรียนในฟอร์ม
-    const studentSelect = document.getElementById('student-name');
-    students.forEach(student => {
-        const option = document.createElement('option');
-        option.value = student.id;
-        option.textContent = student.name;
-        studentSelect.appendChild(option);
-    });
+document.addEventListener("DOMContentLoaded", function () {
+    const subjectSelect = document.getElementById("subject");
+    const gradeForm = document.getElementById("grade-form");
+    const testScoreDiv = document.getElementById("test-score");
 
-    // เติมข้อมูลวิชาในฟอร์ม
-    const subjectSelect = document.getElementById('subject');
-    subjects.forEach(subject => {
-        const option = document.createElement('option');
-        option.value = subject.id;
-        option.textContent = subject.name;
-        subjectSelect.appendChild(option);
-    });
+    // รายการวิชาและลิงก์ iframe ของแต่ละวิชา
+    const subjectLinks = {
+        "math": "https://example.com/math-results",
+        "science": "https://example.com/science-results",
+        "english": "https://example.com/english-results",
+        "history": "https://example.com/history-results"
+    };
 
-    // ฟังก์ชันการบันทึกผลการเรียน
-    gradeForm.addEventListener('submit', (event) => {
-        event.preventDefault();
+    // ฟังก์ชันสำหรับโหลดตัวเลือกวิชา
+    function loadSubjects() {
+        Object.keys(subjectLinks).forEach(subjectCode => {
+            const option = document.createElement("option");
+            option.value = subjectCode;
+            option.textContent = {
+                "math": "คณิตศาสตร์",
+                "science": "วิทยาศาสตร์",
+                "english": "ภาษาอังกฤษ",
+                "history": "ประวัติศาสตร์"
+            }[subjectCode];
+            subjectSelect.appendChild(option);
+        });
+    }
+
+    // ฟังก์ชันแสดง iframe ตามวิชาที่เลือก
+    function displayGradeIframe(subject) {
+        testScoreDiv.innerHTML = ""; // เคลียร์ข้อมูลเดิม
         
-        const studentId = studentSelect.value;
-        const subjectId = subjectSelect.value;
-        const grade = document.getElementById('grade').value;
+        if (!subject || !subjectLinks[subject]) return;
 
-        // ตรวจสอบว่ามีข้อมูลครบถ้วน
-        if (!studentId || !subjectId || !grade) {
-            gradeMessage.textContent = 'กรุณากรอกข้อมูลให้ครบ';
-            gradeMessage.style.color = 'red';
-            return;
-        }
+        const iframe = document.createElement("iframe");
+        iframe.src = subjectLinks[subject]; // ใช้ URL ที่กำหนดไว้
+        iframe.width = "100%";
+        iframe.height = "400px";
+        iframe.style.border = "1px solid #ccc";
 
-        // บันทึกผลการเรียน (สามารถบันทึกใน localStorage หรือส่งไปที่ API)
-        const gradeData = {
-            studentId,
-            subjectId,
-            grade,
-        };
+        testScoreDiv.appendChild(iframe);
+    }
 
-        let grades = JSON.parse(localStorage.getItem('grades')) || [];
-        grades.push(gradeData);
-        localStorage.setItem('grades', JSON.stringify(grades));
+    // โหลดตัวเลือกวิชาเมื่อหน้าเว็บโหลดเสร็จ
+    loadSubjects();
 
-        // แสดงข้อความสำเร็จ
-        gradeMessage.textContent = 'บันทึกผลการเรียนสำเร็จ';
-        gradeMessage.style.color = 'green';
-
-        // เพิ่มข้อมูลลงในตาราง
-        const student = students.find(s => s.id === studentId);
-        const subject = subjects.find(s => s.id === subjectId);
-
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${student.name}</td>
-            <td>${subject.name}</td>
-            <td>${grade}</td>
-        `;
-        gradesList.appendChild(row);
+    // จัดการเมื่อกด submit ฟอร์ม
+    gradeForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const selectedSubject = subjectSelect.value;
+        displayGradeIframe(selectedSubject);
     });
 });
