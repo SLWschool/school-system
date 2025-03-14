@@ -8,7 +8,7 @@ function login(event) {
     const password = document.getElementById('password').value;
 
     // ดึงข้อมูลจาก login.json
-    fetch('login.json')
+    fetch('https://script.google.com/macros/s/AKfycbxP-k21wClJGwBBw0SQurHAbJggoQeis_u3pgxi_sCVaPTbBONXTup3aVHBKu-nw-ZeJw/exec')
         .then(response => response.json())
         .then(data => {
             const user = data.users.find(user => user.username === username);
