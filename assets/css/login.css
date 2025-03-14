@@ -18,6 +18,11 @@ body {
     width: 90vw;
 }
 
+.login-box, .register-box {
+    max-width: 400px;
+    min-width: 320px;
+}
+
 .login-logo {
     text-align: center;
     width: 100%;
