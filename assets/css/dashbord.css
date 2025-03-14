@@ -131,3 +131,8 @@ main h2 {
         width: 100%!important;
     }
 }
+
+.menu img {
+    height: 200px;
+    margin-bottom: 10px;
+}
