@@ -1,42 +1,46 @@
-// ตรวจสอบการเข้าสู่ระบบ
-function login(event) {
-    event.preventDefault(); // ป้องกันการรีเฟรชหน้าเมื่อ submit
+document.addEventListener('DOMContentLoaded', () => { 
+    const userRole = localStorage.getItem('userRole');
+    const username = localStorage.getItem('username');  
+    const name = localStorage.getItem('name') || username; // ใช้ชื่อจริง ถ้าไม่มีให้ใช้ username
+    const profileInfo = document.getElementById('profile-info');
+    const editBtn = document.getElementById('edit-btn');
+    const editForm = document.getElementById('edit-form');
+    const profileForm = document.getElementById('profile-form');
+    
+    // แสดงข้อมูลโปรไฟล์
+    profileInfo.innerHTML = `
+        <p><strong>ชื่อ:</strong> ${name}</p>
+        <p><strong>ชื่อผู้ใช้:</strong> ${username}</p>
+        <p><strong>บทบาท:</strong> ${userRole === 'teacher' ? 'ครู' : 'นักเรียน'}</p>
+    `;
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    // เมื่อคลิก "แก้ไขโปรไฟล์"
+    editBtn.addEventListener('click', () => {
+        editForm.style.display = 'block';
+        profileInfo.style.display = 'none';
+    });
 
-    // ดึงข้อมูลจาก login.json
-    fetch("https://script.google.com/macros/s/AKfycbwuqsiQsOEqEcrRU37qs1WMOwF5f-1yZj3OthEKLYE2rCikvr4-05AsbRniyL7KXDvQpw/exec")
-        .then(response => response.json())
-        .then(data => {
-            const user = data.users.find(user => user.username === username);
+    // เมื่อบันทึกการแก้ไข
+    profileForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-            if (user && user.password === password) {
-                alert("เข้าสู่ระบบสำเร็จ");
+        const newName = document.getElementById('name').value;
+        const newEmail = document.getElementById('email').value;
+        const newRole = document.getElementById('role').value;
 
-                // เก็บข้อมูลใน localStorage
-                localStorage.setItem("username", user.username);
-                localStorage.setItem("userRole", user.role);
-                
-                // เปลี่ยนเส้นทางไปที่ dashboard ตาม role
-                if (user.role === "teacher") {
-                    window.location.href = "teacher-dashboard.html";
-                } else {
-                    window.location.href = "dashboard.html";
-                }
-            } else {
-                alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
-            }
-        })
-        .catch(error => {
-            console.error("เกิดข้อผิดพลาดในการโหลดข้อมูล:", error);
-        });
-}
+        // บันทึกข้อมูลใหม่
+        localStorage.setItem('name', newName);
+        localStorage.setItem('userRole', newRole);
 
-// ตรวจสอบว่ามีฟอร์ม login หรือไม่
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.getElementById("login-form");
-    if (loginForm) {
-        loginForm.addEventListener("submit", login);
-    }
+        // อัปเดตข้อมูลที่แสดง
+        profileInfo.innerHTML = `
+            <p><strong>ชื่อ:</strong> ${newName}</p>
+            <p><strong>ชื่อผู้ใช้:</strong> ${username}</p>
+            <p><strong>บทบาท:</strong> ${newRole === 'teacher' ? 'ครู' : 'นักเรียน'}</p>
+        `;
+        
+        // ซ่อนฟอร์มการแก้ไข
+        editForm.style.display = 'none';
+        profileInfo.style.display = 'block';
+    });
 });
