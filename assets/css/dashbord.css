@@ -1,3 +1,10 @@
+.theme {
+    --color1: rgb(56, 200, 237);
+    --color2: rgb(125, 213, 220);
+    --color3: rgb(145, 167, 236);
+    --color4: rgb(152, 143, 245);
+}
+
 main {
     margin-top: 90px;
     padding: 20px 0;
@@ -6,13 +13,28 @@ main {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background: #28a745;
     color: white;
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
     border: 0;
     height: max-content;
+}
+
+.student {
+    background: var(--color1);
+}
+
+.student:hover {
+    background: var(--color2);
+}
+
+.teacher {
+    background: var(--color3);
+}
+
+.teacher:hover {
+    background: var(--color4);
 }
 
 .btn:hover {
