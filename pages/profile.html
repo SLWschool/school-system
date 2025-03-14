@@ -10,49 +10,35 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="../assets/img/logo.png" alt="โลโก้โรงเรียน" class="logo">
-            <h1>โปรไฟล์ผู้ใช้</h1>
-        </div>
+        <h1>โปรไฟล์ผู้ใช้</h1>
         <nav>
             <ul>
-                <li><a href="dashboard.html">กลับสู่ Dashboard</a></li>
-                <li><a href="login.html">ออกจากระบบ</a></li>
+                <li><a href="dashboard.html">แดชบอร์ด</a></li>
+                <li><a href="logout.html">ออกจากระบบ</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="profile-container">
-            <h2>ข้อมูลผู้ใช้</h2>
-            <div id="profile-info">
-                <!-- ข้อมูลผู้ใช้จะแสดงที่นี่ -->
-            </div>
-            <button id="edit-btn">แก้ไขโปรไฟล์</button>
-            <div id="edit-form" style="display:none;">
-                <h3>แก้ไขข้อมูล</h3>
-                <form id="profile-form">
-                    <label for="name">ชื่อ:</label>
-                    <input type="text" id="name" name="name">
-                    <br>
-                    <label for="email">อีเมล์:</label>
-                    <input type="email" id="email" name="email">
-                    <br>
-                    <label for="role">บทบาท:</label>
-                    <select id="role" name="role">
-                        <option value="teacher">ครู</option>
-                        <option value="student">นักเรียน</option>
-                    </select>
-                    <br>
-                    <button type="submit">บันทึก</button>
-                </form>
-            </div>
+        <div id="profile-info">
+            <!-- แสดงข้อมูลผู้ใช้ที่ดึงจาก Local Storage -->
+        </div>
+        
+        <button id="edit-btn">แก้ไขโปรไฟล์</button>
+
+        <div id="edit-form" style="display: none;">
+            <h2>แก้ไขโปรไฟล์</h2>
+            <form id="profile-form">
+                <label for="name">ชื่อ:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">อีเมล:</label>
+                <input type="email" id="email" required>
+
+                <button type="submit">บันทึก</button>
+            </form>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; 2025 โรงเรียนสโมสรหลวงวิทยาลัย</p>
-    </footer>
 
     <script src="../assets/js/profile.js"></script>
 </body>
