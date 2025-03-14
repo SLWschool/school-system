@@ -5,10 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // รายการวิชาและลิงก์ iframe ของแต่ละวิชา
     const subjectLinks = {
-        "math": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAdRma2Io46erZSE6yVa6Lwqj0TZFZyjDT-ACbEW6Ns7oRUOEtOSrkWRAU2CbS-ouCmdTElvv5cP7u/pubhtml?gid=2060522829&amp;single=true&amp;widget=true&amp;headers=false",
-        "science": "https://example.com/science-results",
-        "english": "https://example.com/english-results",
-        "history": "https://example.com/history-results"
+        "thai": "https://docs.google.com/spreadsheets/d/1iuwdT6ZEaSSGgRGFCq9GbN91oYitEhVr5FyxsJNQ5m0/edit?usp=sharing",
+        "math": "https://docs.google.com/spreadsheets/d/1LD5JyxnCvYl9aFjwqiL03EQH5NO5ycV_kxTei68cPcs/edit?usp=sharing",
+        "science": "https://docs.google.com/spreadsheets/d/12nnWsTBZh73_ICQCML3Rvehf_BwFJ2SSGQyT16zKR8s/edit?usp=sharing",
+        "tech": "https://docs.google.com/spreadsheets/d/1VxFQOWpdxKQvjHzOe6Uj9Jf3ur1YvDlDDa9YYC8a8SE/edit?usp=sharing",
+        "career": "https://docs.google.com/spreadsheets/d/11nsyyRgibm9RiQekbSCmSdPhefRWxZdlGGVrQd8Oi6w/edit?usp=sharing",
+        "pe": "https://docs.google.com/spreadsheets/d/11nsyyRgibm9RiQekbSCmSdPhefRWxZdlGGVrQd8Oi6w/edit?usp=sharing",
+        "art": "https://docs.google.com/spreadsheets/d/11nsyyRgibm9RiQekbSCmSdPhefRWxZdlGGVrQd8Oi6w/edit?usp=sharing",
+        "english": "https://docs.google.com/spreadsheets/d/1iuwdT6ZEaSSGgRGFCq9GbN91oYitEhVr5FyxsJNQ5m0/edit?usp=sharing",
+        "soc": "https://docs.google.com/spreadsheets/d/1QYPa23eNjjBx-fI73jsbYTGxN_2cpOHdY7wytxCQWeI/edit?usp=sharing"
     };
 
     // ฟังก์ชันสำหรับโหลดตัวเลือกวิชา
@@ -17,10 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const option = document.createElement("option");
             option.value = subjectCode;
             option.textContent = {
-                "math": "คณิตศาสตร์",
-                "science": "วิทยาศาสตร์",
-                "english": "ภาษาอังกฤษ",
-                "history": "ประวัติศาสตร์"
+                "thai": "สาระภาษาไทย",
+                "math": "สาระคณิตศาสตร์",
+                "science": "สาระวิทยาศาสตร์",
+                "tech": "สาระเทคโนโลยี",
+                "career": "สาระการงานอาชีพ",
+                "pe": "สาระสุขศึกษา",
+                "art": "สาระศิลปะ",
+                "soc": "สาระสังคมฯ",
+                "english": "สาระภาษาต่างประเทศ"
             }[subjectCode];
             subjectSelect.appendChild(option);
         });
@@ -32,10 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
         
         if (!subject || !subjectLinks[subject]) return;
 
-        const iframe = document.createElement("iframe");
+        const iframe = document.createElement("a");
         iframe.src = subjectLinks[subject]; // ใช้ URL ที่กำหนดไว้
-        iframe.width = "100%";
-        iframe.height = "400px";
         iframe.style.border = "1px solid #ccc";
 
         testScoreDiv.appendChild(iframe);
