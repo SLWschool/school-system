@@ -8,10 +8,10 @@ function login(event) {
     const password = document.getElementById('password').value;
 
     // ดึงข้อมูลจาก login.json
-    fetch('https://script.google.com/macros/s/AKfycbxP-k21wClJGwBBw0SQurHAbJggoQeis_u3pgxi_sCVaPTbBONXTup3aVHBKu-nw-ZeJw/exec')
+    fetch('login.json')
         .then(response => response.json())
         .then(data => {
-            const user = data.users.find(user => user.username === username);
+            const user = data.find(user => user.username === username); // ใช้ find แทนการใช้ filter
 
             // ตรวจสอบรหัสผู้ใช้
             if (user && user.password === password) {
