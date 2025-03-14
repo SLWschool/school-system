@@ -131,6 +131,10 @@ ul.news-ul {
     font-weight: 600;
 }
 
+icon {
+    font-size: 40px;
+}
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
