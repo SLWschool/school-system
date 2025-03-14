@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ออกจากระบบ</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="logout-container">
+        <h2>กำลังออกจากระบบ...</h2>
+    </div>
+
+    <script>
+        // ลบข้อมูลการเข้าสู่ระบบออกจาก localStorage
+        localStorage.removeItem("username");
+        localStorage.removeItem("userRole");
+
+        // ส่งกลับไปยังหน้า login
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2000);
+    </script>
+</body>
+</html>
