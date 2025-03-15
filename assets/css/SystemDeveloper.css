@@ -161,24 +161,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-@media (min-width: 992px) {
-    .card-deck.card-deck--lg-3 .card {
-        flex: 0 0 calc(100% / 3 - 30px) !important;
-        flex-basis: calc(100% / 3 - 30px) !important;
-        max-width: calc(100% / 3 - 30px) !important;
-        margin-right: 15px !important;
-        margin-left: 15px !important;
-    }
-}
-@media (min-width: 768px) {
-    .card-deck.card-deck--md-2 .card {
-        flex: 0 0 calc(50% - 30px) !important;
-        flex-basis: calc(50% - 30px) !important;
-        max-width: calc(50% - 30px) !important;
-        margin-right: 15px !important;
-        margin-left: 15px !important;
-    }
-}
 .card-deck.card-deck--1 .card {
     flex: 0 0 100%;
     flex-basis: 100%;
