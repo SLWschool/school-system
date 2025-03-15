@@ -1,18 +1,19 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const studentTable = document.getElementById('student-list');
+    const searchInput = document.getElementById('search-student');
 
-    // URL ของ Google Script ที่ส่งข้อมูล JSON มาให้
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiNh3mDGKfIvpV6EGRqVg8tlhVGA5tcCOUVUR3rmfhzRsmC5f0-jb0pJrakGNNks8Z/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiNh3mDGKfIvpV6EGRqVg8tlhVGA5tcCOUVUR3rmfhzRsmC5f0-jb0pJrakGNNks8Z/exec"; // ใส่ลิงก์ Google Script ของคุณ
+    let studentsData = []; // เก็บข้อมูลนักเรียนทั้งหมด
 
     // ฟังก์ชันดึงข้อมูลจาก Google Script
     async function fetchStudents() {
         try {
             const response = await fetch(GOOGLE_SCRIPT_URL);
-            if (!response.ok) {
-                throw new Error("ไม่สามารถโหลดข้อมูลนักเรียนได้");
-            }
-            const data = await response.json();
-            renderStudents(data);
+            if (!response.ok) throw new Error("ไม่สามารถโหลดข้อมูลนักเรียนได้");
+            
+            studentsData = await response.json();
+            renderStudents(studentsData);
         } catch (error) {
             console.error("Error:", error);
             studentTable.innerHTML = `<tr><td colspan="3">เกิดข้อผิดพลาดในการโหลดข้อมูล</td></tr>`;
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ฟังก์ชันแสดงข้อมูลในตาราง
     function renderStudents(students) {
-        studentTable.innerHTML = ""; // เคลียร์ตารางก่อนเพิ่มข้อมูลใหม่
+        studentTable.innerHTML = ""; // ล้างข้อมูลเก่า
         students.forEach(student => {
             const row = document.createElement("tr");
             row.innerHTML = `
@@ -33,6 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // เรียกใช้ฟังก์ชันดึงข้อมูลเมื่อโหลดหน้า
+    // ฟังก์ชันค้นหานักเรียน
+    function searchStudents() {
+        const query = searchInput.value.toLowerCase();
+        const filteredStudents = studentsData.filter(student => 
+            student.id.includes(query) || 
+            student.name.toLowerCase().includes(query) || 
+            student.class.includes(query)
+        );
+        renderStudents(filteredStudents);
+    }
+
+    // ดึงข้อมูลเมื่อโหลดหน้า
     fetchStudents();
+
+    // เพิ่ม Event Listener ให้กับช่องค้นหา
+    searchInput.addEventListener('input', searchStudents);
 });
