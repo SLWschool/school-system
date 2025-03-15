@@ -74,3 +74,17 @@
         max-width:1650px
     }
 }
+
+.text-center {
+    text-align: center !important;
+}
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem !important;
+}
+.row {
+    display: flex
+;
+    flex-wrap: wrap;
+    margin-right: -12px;
+    margin-left: -12px;
+}
