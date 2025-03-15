@@ -1,12 +1,28 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const showTime = new Date("2025-03-30T12:00:00"); // กำหนดเวลาแสดงผล
+    const now = new Date();
+
+    if (now >= showTime) {
+        loadStudentGrades(); // ถ้าเวลาถึงแล้ว แสดงผลทันที
+    } else {
+        const interval = setInterval(() => {
+            const currentTime = new Date();
+            if (currentTime >= showTime) {
+                clearInterval(interval); // หยุดการตรวจสอบเมื่อถึงเวลา
+                loadStudentGrades(); // แสดงผลตาราง
+            }
+        }, 1000); // ตรวจสอบทุก 1 วินาที
+    }
+});
+
+async function loadStudentGrades() {
     const apiUrl = "https://script.google.com/macros/s/AKfycbxVXgNcsA-X87rfy4Okzl7TT99MnyJOHT0TkdZbPRXr57IwZ62xHOspZAj_PlzTAGM4/exec";
     
-    // ดึงชื่อจากระบบล็อกอิน (ต้องมีการล็อกอินก่อนหน้านี้)
     const studentName = localStorage.getItem('name');
 
     if (!studentName) {
         alert("กรุณาเข้าสู่ระบบก่อน");
-        window.location.href = "login.html"; // ส่งกลับไปหน้าล็อกอิน
+        window.location.href = "login.html";
         return;
     }
 
@@ -14,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch(apiUrl);
         const gradeData = await response.json();
 
-        // กรองข้อมูลเฉพาะของนักเรียนที่ล็อกอินอยู่
         const studentGrades = gradeData.filter(grade => grade.name === studentName);
 
         if (!studentGrades.length) {
@@ -23,7 +38,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        // ตั้งค่าชื่อนักเรียน
         document.getElementById('name').textContent = studentName;
 
         const gradeList = document.getElementById('grade-list');
@@ -41,12 +55,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
             gradeList.appendChild(row);
 
-            // คำนวณผลการเรียนเฉลี่ย (GPA)
             totalWeight += grade.weight;
             totalGradePoints += grade.weight * parseFloat(grade.grade);
         });
 
-        // คำนวณ GPA
         const gpa = totalWeight > 0 ? (totalGradePoints / totalWeight).toFixed(2) : "0.00";
         document.getElementById('gpa').textContent = gpa;
 
@@ -55,4 +67,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('name').textContent = "เกิดข้อผิดพลาด";
         document.getElementById('gpa').textContent = "N/A";
     }
-});
+}
