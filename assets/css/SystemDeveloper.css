@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6, p {
         margin-left: 15px !important;
     }
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .card-deck.card-deck--md-2 .card {
         flex: 0 0 calc(50% - 30px) !important;
         flex-basis: calc(50% - 30px) !important;
@@ -178,23 +178,21 @@ h1, h2, h3, h4, h5, h6, p {
         margin-left: 15px !important;
     }
 }
-@media (min-width: 576px) {
     .card-deck {
-        display: flex
-;
+        display: flex;
         flex-flow: row wrap;
         margin-right: -15px;
         margin-left: -15px;
     }
-}
 
-
+@media (max-width: 576px) {
 .card-deck.card-deck--1 .card {
     flex: 0 0 100%;
     flex-basis: 100%;
     max-width: 100%;
     margin-right: 0;
     margin-left: 0;
+}
 }
 .card-deck .card {
     margin-bottom: 2.5rem;
