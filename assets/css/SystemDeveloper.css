@@ -134,15 +134,17 @@ h1, h2, h3, h4, h5, h6, p {
         margin-left: -15px;
     }
 }
-@media (min-width: 768px) {
+@media (max-width: 992px) {
     .card-deck.card-deck--md-2 {
         margin-right: -15px;
         margin-left: -15px;
     }
 }
+@media (max-width: 768px) 
 .card-deck.card-deck--1 {
     margin-right: 0;
     margin-left: 0;
+}
 }
 .card-deck {
     margin-right: -15px;
