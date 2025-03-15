@@ -1,71 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     const studentTable = document.getElementById('student-list');
-    const studentForm = document.getElementById('add-student-form');
-    const searchInput = document.getElementById('search-student');
-    const message = document.getElementById('message');
 
-    // ดึงข้อมูลนักเรียนจาก localStorage หรือสร้างใหม่หากยังไม่มี
-    let students = JSON.parse(localStorage.getItem('students')) || [];
+    // URL ของ Google Script ที่ส่งข้อมูล JSON มาให้
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiNh3mDGKfIvpV6EGRqVg8tlhVGA5tcCOUVUR3rmfhzRsmC5f0-jb0pJrakGNNks8Z/exec";
 
-    // ฟังก์ชันแสดงรายชื่อนักเรียนในตาราง
-    function renderStudents(filter = '') {
-        studentTable.innerHTML = '';
-        students
-            .filter(student => student.name.includes(filter))
-            .forEach(student => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${student.id}</td>
-                    <td>${student.name}</td>
-                    <td>${student.class}</td>
-                    <td>${student.number}</td>
-                `;
-                studentTable.appendChild(row);
-            });
+    // ฟังก์ชันดึงข้อมูลจาก Google Script
+    async function fetchStudents() {
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL);
+            if (!response.ok) {
+                throw new Error("ไม่สามารถโหลดข้อมูลนักเรียนได้");
+            }
+            const data = await response.json();
+            renderStudents(data);
+        } catch (error) {
+            console.error("Error:", error);
+            studentTable.innerHTML = `<tr><td colspan="3">เกิดข้อผิดพลาดในการโหลดข้อมูล</td></tr>`;
+        }
     }
 
-    // โหลดข้อมูลนักเรียนเมื่อเปิดหน้า
-    renderStudents();
+    // ฟังก์ชันแสดงข้อมูลในตาราง
+    function renderStudents(students) {
+        studentTable.innerHTML = ""; // เคลียร์ตารางก่อนเพิ่มข้อมูลใหม่
+        students.forEach(student => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${student.id}</td>
+                <td>${student.name}</td>
+                <td>${student.class}</td>
+            `;
+            studentTable.appendChild(row);
+        });
+    }
 
-    // ฟังก์ชันเพิ่มนักเรียนใหม่
-    studentForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        const id = document.getElementById('student-id').value.trim();
-        const name = document.getElementById('student-name').value.trim();
-        const classLevel = document.getElementById('student-class').value.trim();
-        const number = document.getElementById('student-number').value.trim();
-
-        // ตรวจสอบข้อมูล
-        if (!id || !name || !classLevel || !number) {
-            message.textContent = 'กรุณากรอกข้อมูลให้ครบถ้วน';
-            message.style.color = 'red';
-            return;
-        }
-
-        // ตรวจสอบว่ารหัสนักเรียนซ้ำหรือไม่
-        if (students.some(student => student.id === id)) {
-            message.textContent = 'รหัสนักเรียนนี้มีอยู่แล้ว';
-            message.style.color = 'red';
-            return;
-        }
-
-        // เพิ่มนักเรียนใหม่
-        const newStudent = { id, name, class: classLevel, number };
-        students.push(newStudent);
-        localStorage.setItem('students', JSON.stringify(students));
-
-        // อัปเดตตารางและแสดงข้อความสำเร็จ
-        renderStudents();
-        message.textContent = 'เพิ่มนักเรียนสำเร็จ';
-        message.style.color = 'green';
-
-        // ล้างค่าในฟอร์ม
-        studentForm.reset();
-    });
-
-    // ฟังก์ชันค้นหานักเรียน
-    searchInput.addEventListener('input', () => {
-        renderStudents(searchInput.value.trim());
-    });
+    // เรียกใช้ฟังก์ชันดึงข้อมูลเมื่อโหลดหน้า
+    fetchStudents();
 });
