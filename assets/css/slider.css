@@ -1,9 +1,11 @@
 /* สไตล์ของ slider */
+
 .slider {
     position: relative;
-    width: 100%;
-    max-width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
 }
 
 /* สไตล์ของแต่ละ slide */
@@ -17,6 +19,7 @@
 .slide img {
     width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
 /* ใช้แอนิเมชั่น fade */
