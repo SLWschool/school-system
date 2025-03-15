@@ -347,7 +347,7 @@ img {
 }
 @media (min-width: 1200px) {
     .card--leadership .card__footer {
-        display: none;
+        display: none !important;
     }
 }
 .card--leadership .card__footer {
