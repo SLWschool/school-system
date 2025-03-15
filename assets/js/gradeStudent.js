@@ -1,24 +1,36 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const apiUrl = "https://script.google.com/macros/s/AKfycbxVXgNcsA-X87rfy4Okzl7TT99MnyJOHT0TkdZbPRXr57IwZ62xHOspZAj_PlzTAGM4/exec";
     
+    // ดึงชื่อจากระบบล็อกอิน (ต้องมีการล็อกอินก่อนหน้านี้)
+    const studentName = localStorage.getItem('studentName');
+
+    if (!studentName) {
+        alert("กรุณาเข้าสู่ระบบก่อน");
+        window.location.href = "login.html"; // ส่งกลับไปหน้าล็อกอิน
+        return;
+    }
+
     try {
         const response = await fetch(apiUrl);
         const gradeData = await response.json();
 
-        if (!gradeData || gradeData.length === 0) {
-            document.getElementById('name').textContent = "ไม่มีข้อมูล";
+        // กรองข้อมูลเฉพาะของนักเรียนที่ล็อกอินอยู่
+        const studentGrades = gradeData.filter(grade => grade.name === studentName);
+
+        if (!studentGrades.length) {
+            document.getElementById('name').textContent = studentName + " (ไม่มีข้อมูลเกรด)";
             document.getElementById('gpa').textContent = "N/A";
             return;
         }
 
-        // ตั้งค่าให้แสดงชื่อนักเรียน (ใช้ชื่อของนักเรียนคนแรก)
-        document.getElementById('name').textContent = gradeData[0].name;
+        // ตั้งค่าชื่อนักเรียน
+        document.getElementById('name').textContent = studentName;
 
         const gradeList = document.getElementById('grade-list');
         let totalWeight = 0;
         let totalGradePoints = 0;
 
-        gradeData.forEach(grade => {
+        studentGrades.forEach(grade => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${grade.subId}</td>
