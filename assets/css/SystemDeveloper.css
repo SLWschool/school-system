@@ -484,3 +484,7 @@ html[lang=en] .btn--outline-primary .btn__title, html[lang=en] .btn--outline-sec
         margin-left: -15px;
     }
 }
+
+.btn--hover-white:hover .btn__title {
+    color: #fa0505 !important;
+}
