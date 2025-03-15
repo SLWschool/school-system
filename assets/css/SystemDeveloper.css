@@ -1,1 +1,26 @@
-
+@media (max-width: 767.98px) {
+    .section {
+        padding-bottom: 3rem;
+    }
+}
+@media (max-width: 1199.98px) {
+    .section {
+        padding-bottom: 6.75rem;
+    }
+}
+@media (max-width: 1399.98px) {
+    .section {
+        padding-bottom: 7rem;
+    }
+}
+.section {
+    padding-bottom: 7.75rem;
+}
+.section {
+    position: relative;
+}
+@media (max-width: 767.98px) {
+    .section {
+        padding: 3.5rem 0;
+    }
+}
