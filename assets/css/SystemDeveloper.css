@@ -444,3 +444,33 @@ html[lang=en] .btn--outline-primary .btn__title, html[lang=en] .btn--outline-sec
     position: relative;
     z-index: 10;
 }
+
+@media (min-width: 992px) {
+    .card-deck.card-deck--lg-3 {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+@media (min-width: 768px) {
+    .card-deck.card-deck--md-2 {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+.card-deck.card-deck--1 {
+    margin-right: 0;
+    margin-left: 0;
+}
+.card-deck {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+@media (min-width: 576px) {
+    .card-deck {
+        display: flex
+;
+        flex-flow: row wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
