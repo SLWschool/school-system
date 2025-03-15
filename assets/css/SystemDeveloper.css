@@ -25,6 +25,7 @@ html[lang=th] h2, html[lang=th] .h2 {
 }
 .section {
     position: relative;
+    color: #fff;
 }
 @media (max-width: 767.98px) {
     .section {
