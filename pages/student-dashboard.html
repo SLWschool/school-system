@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แดชบอร์ดนักเรียน</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../assets/img/logo.png" alt="โลโก้โรงเรียน" class="logo">
+            <h1>แดชบอร์ดนักเรียน</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">กลับสู่ Dashboard</a></li>
+                <li><a href="profile.html">โปรไฟล์</a></li>
+                <li><a href="logout.html">ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>ยินดีต้อนรับ, <span id="student-name">กำลังโหลด...</span></h2>
+        <p>อีเมล: <span id="student-email"></span></p>
+        <p>สถานะ: <span id="student-role"></span></p>
+        
+        <div class="dashboard-container">
+            <div class="card">
+                <h3>ข้อมูลการเรียน</h3>
+                <p>ดูตารางเรียนของคุณ</p>
+                <a href="schedule.html">ดูตารางเรียน</a>
+            </div>
+            <div class="card">
+                <h3>ผลการเรียน</h3>
+                <p>ดูผลการเรียนของคุณ</p>
+                <a href="grades.html">ดูผลการเรียน</a>
+            </div>
+            <div class="card">
+                <h3>ตั้งค่าระบบ</h3>
+                <p>ตั้งค่าบัญชีของคุณ</p>
+                <a href="settings.html">ตั้งค่าระบบ</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 โรงเรียนสโมสรหลวงวิทยาลัย</p>
+    </footer>
+
+    <script src="../assets/js/student-dashboard.js"></script>
+</body>
+</html>
