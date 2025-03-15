@@ -1,0 +1,32 @@
+/* สไตล์ของ slider */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* สไตล์ของแต่ละ slide */
+.slide {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+/* แสดงภาพทั้งหมดใน slide */
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+/* ใช้แอนิเมชั่น fade */
+@keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* เพิ่มการแสดงภาพ */
+.fade {
+    animation: fade 3s infinite;
+}
