@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const apiUrl = "https://script.google.com/macros/s/AKfycbxVXgNcsA-X87rfy4Okzl7TT99MnyJOHT0TkdZbPRXr57IwZ62xHOspZAj_PlzTAGM4/exec";
     
     // ดึงชื่อจากระบบล็อกอิน (ต้องมีการล็อกอินก่อนหน้านี้)
-    const studentName = localStorage.getItem('studentName');
+    const studentName = localStorage.getItem('name');
 
     if (!studentName) {
         alert("กรุณาเข้าสู่ระบบก่อน");
