@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ดึงข้อมูลจาก localStorage
-    const studentName = localStorage.getItem('username');
+    const studentName = localStorage.getItem('name');
     const studentEmail = localStorage.getItem('username');
     const userRole = localStorage.getItem('userRole');
 
