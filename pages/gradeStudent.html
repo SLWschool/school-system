@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ผลการเรียนของนักเรียน</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/font-face.css">
+    <link rel="stylesheet" href="../assets/css/font-face.css">
 </head>
 <body>
     <header>
@@ -22,24 +22,31 @@
     </header>
 
     <main>
-        <h2>ยินดีต้อนรับ, <span id="student-name">กำลังโหลด...</span></h2>
-        <p>ผลการเรียนของคุณ:</p>
+        <section class="container">
+            <h2>ผลการเรียนของ <span id="name">กำลังโหลด...</span></h2>
         
-        <section id="grade-section">
             <table id="grade-table">
                 <thead>
                     <tr>
                         <th>รหัสวิชา</th>
                         <th>ชื่อวิชา</th>
+                        <th>หน่วยกิต</th>
                         <th>คะแนน</th>
-                        <th>สถานะ</th>
+                        <th>ผลการเรียน</th>
                     </tr>
                 </thead>
                 <tbody id="grade-list">
                     <!-- ข้อมูลผลการเรียนจะถูกเติมโดย JavaScript -->
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" style="text-align: right;"><strong>ผลการเรียนเฉลี่ย (GPA):</strong></td>
+                        <td id="gpa">กำลังโหลด...</td>
+                    </tr>
+                </tfoot>
             </table>
         </section>
+
     </main>
 
     <footer>
