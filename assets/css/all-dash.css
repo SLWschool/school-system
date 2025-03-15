@@ -5,6 +5,13 @@
     font-family: CPN, sans-serif;
 }
 
+body {
+    background-color: #f5f5f5;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
 /* Header */
 header {
     background: rgba(0 ,0 ,0 ,0.5);
@@ -35,11 +42,6 @@ header {
 }
 
 @media (max-width: 600px) {
-    .logo {
-        width: 40px !important;
-        height: 40px !important;
-    }
-  
     h1.last-child {
         display: block;
     }
@@ -58,4 +60,68 @@ header h1 {
 
 h1.last-child {
     display: none;
+}
+
+@media (max-width: 400px) {
+    header ul {
+        flex-direction: column;
+        text-align: right;
+    }
+}
+@media (max-width: 300px) {
+    h1.last-child {
+        display: none;
+    }
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    gap: 15px;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+header ul li {
+    display: inline;
+}
+
+header ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+header ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+main {
+    margin-top: 90px;
+    padding: 20px 0;
+}
+
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer {
+    background: linear-gradient(0, #000000, transparent);
+    color: white;
+    padding: 20px;
 }
