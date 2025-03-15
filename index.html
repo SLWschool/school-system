@@ -8,6 +8,52 @@
     <link rel="stylesheet" href="assets/css/font-face.css">
     <script src="assets/js/scroll.js"></script>
     <style>
+        .container {
+            width: 100%;
+            max-width: 1200px; /* ขนาดสูงสุด */
+            margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+            padding: 0 15px; /* ระยะขอบ */
+        }
+        
+        /* 💻 ขนาดจอใหญ่ (เดสก์ท็อป) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+        
+        /* 🖥 ขนาดจอปานกลาง (แล็ปท็อป) */
+        @media (max-width: 1199px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+        
+        /* 📱 ขนาดแท็บเล็ต */
+        @media (max-width: 991px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+        
+        /* 📲 ขนาดมือถือ */
+        @media (max-width: 767px) {
+            .container {
+                max-width: 540px;
+                padding: 0 10px;
+            }
+        }
+        
+        /* 📏 จอเล็กมาก (มือถือจอเล็ก) */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+                padding: 0 5px;
+            }
+        }
+
+    </style>
+    <style>
         body{
             background: #1e1e1e !important;
         }
@@ -63,7 +109,7 @@
     </header>
 
     <main>
-        <section class="about abouts">
+        <section class="container abouts">
             <h2>About Website</h2>
             <p>ระบบโรงเรียนสโมสรหลวงวิทยาลัย ประกอบด้วยระบบครูและนักเรียน</p>
             <div class="flex">
